@@ -44,14 +44,14 @@ public class BibliotecaTest {
 
     @Test
     public void testFormatCommands() {
-        assertEquals(biblioteca.formatCommands(), "L: List available books\nC: Check out a book\n");
+        assertEquals(biblioteca.formatCommands(), "L: List available books\nC: Check out a book\nR: Return a book\n");
     }
 
     @Test
     public void testOpenDisplaysWelcomeMessageAndMenu() {
         biblioteca.open();
         assertEquals("Welcome to Biblioteca!\n" + "\n" +
-                "L: List available books\nC: Check out a book\n\n", systemOutRule.getLog());
+                "L: List available books\nC: Check out a book\nR: Return a book\n\n", systemOutRule.getLog());
     }
 
     @Test

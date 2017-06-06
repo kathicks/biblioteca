@@ -13,12 +13,13 @@ public class Biblioteca {
     }
 
     private String welcomeMessage = "Welcome to Biblioteca!";
-    private String[] validInputs = new String[] {"L", "C", "Q"};
+    private String[] validInputs = new String[] {"L", "C", "R", "Q"};
     private Command[] commands = new Command[] {
             new ListCommand("L",
                     "List available books"),
             new CheckOutCommand("C",
-                    "Check out a book")
+                    "Check out a book"),
+            new ReturnCommand("R", "Return a book")
     };
     private Book[] books = new Book[] {
             new Book(

@@ -39,6 +39,15 @@ public class Book {
         }
     }
 
+    public boolean checkIn() {
+        if (isOnLoan) {
+            setOnLoan(false);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public void setOnLoan(boolean onLoan) {
         isOnLoan = onLoan;
     }
