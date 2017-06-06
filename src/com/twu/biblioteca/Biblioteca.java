@@ -13,15 +13,20 @@ public class Biblioteca {
     }
 
     private String welcomeMessage = "Welcome to Biblioteca!";
-    private String[] validInputs = new String[] {"L", "C", "R", "M", "Q"};
+    private String[][] validInputs = new String[][] {
+            {"L", "C", "R"},
+            {"M", "B", "G"},
+            {"Q"}};
     private Command[] commands = new Command[] {
-            new ListBookCommand("L",
-                    "List available books"),
-            new CheckOutCommand("C",
-                    "Check out a book"),
-            new ReturnCommand("R", "Return a book"),
-            new ListMovieCommand("M", "List available movies"),
-            new Command("Q", "Quit")
+        new ListCommand("L",
+                "List available books"),
+                new CheckOutCommand("C",
+                        "Check out a book"),
+                new ReturnCommand("R", "Return a book"),
+                new ListCommand("M", "List available movies"),
+                new CheckOutCommand("B", "Check out a movie" ),
+                new ReturnCommand("G", "Return a movie"),
+                new Command("Q", "Quit")
     };
     private Item[] books = new Item[] {
             new Book(
@@ -55,15 +60,18 @@ public class Biblioteca {
             new Movie("Clueless",
                     1995,
                     "Amy Heckerling",
-                    8),
+                    8,
+                    false),
             new Movie("The Harder They Come",
                     1973,
                     "Perry Henzell",
-                    7),
+                    7,
+                    false),
             new Movie("Happy Go Lucky",
                     2008,
                     "Mike Leigh",
-                    6)
+                    6,
+                    false)
     };
 
     public String getWelcomeMessage() {
@@ -112,19 +120,32 @@ public class Biblioteca {
     }
 
     private void executeCommand(String command) {
-        if (Objects.equals(command, "M")) {
-            commands[3].run(getMovies());
+        if (isABookCommand(command)) {
+            findMatchingCommand(command, getBooks());
         } else {
-            for (Command element : getCommands()) {
-                if (Objects.equals(command, element.getSymbol())) {
-                    element.run(getBooks());
-                }
+            findMatchingCommand(command, getMovies());
+        }
+    }
+
+    private void findMatchingCommand(String command, Item[] item) {
+        for (Command element : getCommands()) {
+            if (Objects.equals(command, element.getSymbol())) {
+                element.run(item);
             }
         }
     }
 
     private boolean isValidCommand(String command) {
-        return Arrays.asList(validInputs).contains(command);
+        for (String[] set : validInputs) {
+            if (Arrays.asList(set).contains(command)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isABookCommand(String command) {
+        return Arrays.asList(validInputs[0]).contains(command);
     }
 
 }

@@ -9,13 +9,14 @@ public class Movie extends Item {
     private static final int MIN_RATING = 1;
     private static final int MAX_RATING = 10;
 
-    public Movie(String title, int year, String director, int rating) {
+    public Movie(String title, int year, String director, int rating, boolean isOnLoan) {
         this.title = title;
         this.year = year;
         this.director = director;
         if (rating > MIN_RATING && rating <= MAX_RATING) {
             this.rating = rating;
         }
+        this.isOnLoan = isOnLoan;
     }
 
     public int getYear() {

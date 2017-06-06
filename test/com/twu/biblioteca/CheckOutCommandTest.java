@@ -43,7 +43,7 @@ public class CheckOutCommandTest {
         ByteArrayInputStream in = new ByteArrayInputStream("Brave New World".getBytes());
         System.setIn(in);
         command.run(books);
-        assertTrue(systemOutRule.getLog().contains("Thank you! Enjoy the book."));
+        assertTrue(systemOutRule.getLog().contains("Thank you! Enjoy."));
     }
 
     @Test
@@ -51,6 +51,6 @@ public class CheckOutCommandTest {
         ByteArrayInputStream in = new ByteArrayInputStream("Alone in Berlin".getBytes());
         System.setIn(in);
         command.run(books);
-        assertTrue(systemOutRule.getLog().contains("That book is not available."));
+        assertTrue(systemOutRule.getLog().contains("That item is not available."));
     }
 }

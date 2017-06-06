@@ -7,15 +7,15 @@ import org.junit.contrib.java.lang.system.SystemOutRule;
 
 import static org.junit.Assert.assertTrue;
 
-public class ListBookCommandTest {
+public class ListCommandTest {
 
-    ListBookCommand command;
+    ListCommand command;
     private Book[] books;
     private String sampleOutput;
 
     @Before
     public void setUp() {
-        command = new ListBookCommand("L", "List available books");
+        command = new ListCommand("L", "List available books");
         books = new Book[] {
                 new Book("Half of a Yellow Sun", "Chimamanda Adiche", 2006, false),
                 new Book("Things Fall Apart", "Chinua Achebe", 1958, false),

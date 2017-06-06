@@ -45,7 +45,7 @@ public class ReturnCommandTest {
         System.setIn(in);
         books[4].checkOut();
         command.run(books);
-        assertTrue(systemOutRule.getLog().contains("Thank you for returning the book."));
+        assertTrue(systemOutRule.getLog().contains("Thank you for returning the item."));
     }
 
     @Test
@@ -53,6 +53,6 @@ public class ReturnCommandTest {
         ByteArrayInputStream in = new ByteArrayInputStream("Alone in Berlin".getBytes());
         System.setIn(in);
         command.run(books);
-        assertTrue(systemOutRule.getLog().contains("That is not a valid book to return."));
+        assertTrue(systemOutRule.getLog().contains("That is not a valid item to return."));
     }
 }

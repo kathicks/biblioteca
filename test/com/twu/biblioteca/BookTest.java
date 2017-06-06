@@ -32,17 +32,6 @@ public class BookTest {
     }
 
     @Test
-    public void testIsOnLoan() {
-        assertTrue(!book.isOnLoan());
-    }
-
-    @Test
-    public void testCheckOut() {
-        book.checkOut();
-        assertTrue(book.isOnLoan());
-    }
-
-    @Test
     public void testToString() {
         assertEquals(book.toString(), sampleOutput);
     }

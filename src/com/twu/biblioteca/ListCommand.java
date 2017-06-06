@@ -1,8 +1,8 @@
 package com.twu.biblioteca;
 
-public class ListBookCommand extends Command {
+public class ListCommand extends Command {
 
-    public ListBookCommand(String symbol, String description) {
+    public ListCommand(String symbol, String description) {
         super(symbol, description);
     }
 

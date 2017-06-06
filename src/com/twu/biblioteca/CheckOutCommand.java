@@ -10,17 +10,17 @@ public class CheckOutCommand extends Command {
     }
 
     public void run(Item[] items) {
-        System.out.println("Enter book title:");
+        System.out.println("Enter item title:");
         Scanner input = new Scanner(System.in);
         String bookTitle = input.nextLine();
         for (Item book : items) {
             if (Objects.equals(book.getTitle(), bookTitle)) {
                 if (book.checkOut()){
-                    System.out.println("Thank you! Enjoy the book.");
+                    System.out.println("Thank you! Enjoy.");
                     return;
                 }
             }
         }
-        System.out.println("That book is not available.");
+        System.out.println("That item is not available.");
     }
 }

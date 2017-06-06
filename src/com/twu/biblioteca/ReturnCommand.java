@@ -9,18 +9,18 @@ public class ReturnCommand extends Command {
         super(symbol, description);
     }
 
-    public void run(Item[] books) {
-        System.out.println("Enter book title:");
+    public void run(Item[] items) {
+        System.out.println("Enter item title:");
         Scanner input = new Scanner(System.in);
-        String bookTitle = input.nextLine();
-        for (Item book : books) {
-            if (Objects.equals(book.getTitle(), bookTitle)) {
-                if (book.checkIn()){
-                    System.out.println("Thank you for returning the book.");
+        String title = input.nextLine();
+        for (Item item : items) {
+            if (Objects.equals(item.getTitle(), title)) {
+                if (item.checkIn()){
+                    System.out.println("Thank you for returning the item.");
                     return;
                 }
             }
         }
-        System.out.println("That is not a valid book to return.");
+        System.out.println("That is not a valid item to return.");
     }
 }

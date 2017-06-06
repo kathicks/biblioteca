@@ -4,7 +4,6 @@ public class Book extends Item {
 
     private String author;
     private int yearPublished;
-    private boolean isOnLoan;
 
     public Book(String title, String author, int yearPublished, boolean isOnLoan) {
         this.title = title;
