@@ -16,7 +16,7 @@ public class MovieTest {
 
     @Test
     public void testGetName() {
-        assertEquals(movie.getName(), "Clueless");
+        assertEquals(movie.getTitle(), "Clueless");
     }
 
     @Test

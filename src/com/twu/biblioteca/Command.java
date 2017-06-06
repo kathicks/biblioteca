@@ -22,6 +22,6 @@ public class Command {
         return getSymbol() + ": " + getDescription();
     }
 
-    public void run(Book[] books) { }
+    public void run(Item[] items) { }
 
 }

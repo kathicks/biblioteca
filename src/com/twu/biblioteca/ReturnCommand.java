@@ -9,11 +9,11 @@ public class ReturnCommand extends Command {
         super(symbol, description);
     }
 
-    public void run(Book[] books) {
+    public void run(Item[] books) {
         System.out.println("Enter book title:");
         Scanner input = new Scanner(System.in);
         String bookTitle = input.nextLine();
-        for (Book book : books) {
+        for (Item book : books) {
             if (Objects.equals(book.getTitle(), bookTitle)) {
                 if (book.checkIn()){
                     System.out.println("Thank you for returning the book.");

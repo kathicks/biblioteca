@@ -1,14 +1,14 @@
 package com.twu.biblioteca;
 
-public class ListCommand extends Command {
+public class ListBookCommand extends Command {
 
-    public ListCommand(String symbol, String description) {
+    public ListBookCommand(String symbol, String description) {
         super(symbol, description);
     }
 
-    public void run(Book[] books) {
+    public void run(Item[] items) {
         String result = "";
-        for (Book book : books) {
+        for (Item book : items) {
             if (!book.isOnLoan()) {
                 result += book.toString() + "\n";
             }

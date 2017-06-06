@@ -13,17 +13,17 @@ public class Biblioteca {
     }
 
     private String welcomeMessage = "Welcome to Biblioteca!";
-    private String[] validInputs = new String[] {"L", "C", "R", "Q"};
+    private String[] validInputs = new String[] {"L", "C", "R", "M", "Q"};
     private Command[] commands = new Command[] {
-            new ListCommand("L",
+            new ListBookCommand("L",
                     "List available books"),
             new CheckOutCommand("C",
                     "Check out a book"),
             new ReturnCommand("R", "Return a book"),
-            new Command("M", "List available movies"),
+            new ListMovieCommand("M", "List available movies"),
             new Command("Q", "Quit")
     };
-    private Book[] books = new Book[] {
+    private Item[] books = new Item[] {
             new Book(
                     "Half of a Yellow Sun",
                     "Chimamanda Adiche",
@@ -51,7 +51,7 @@ public class Biblioteca {
                     false)
     };
 
-    private Movie[] movies = new Movie[] {
+    private Item[] movies = new Item[] {
             new Movie("Clueless",
                     1995,
                     "Amy Heckerling",
@@ -70,11 +70,11 @@ public class Biblioteca {
         return welcomeMessage;
     }
 
-    public Book[] getBooks() {
+    public Item[] getBooks() {
         return books;
     }
 
-    public Movie[] getMovies() {
+    public Item[] getMovies() {
         return movies;
     }
 
@@ -112,9 +112,13 @@ public class Biblioteca {
     }
 
     private void executeCommand(String command) {
-        for (Command element : getCommands()) {
-            if (Objects.equals(command, element.getSymbol())) {
-                element.run(getBooks());
+        if (Objects.equals(command, "M")) {
+            commands[3].run(getMovies());
+        } else {
+            for (Command element : getCommands()) {
+                if (Objects.equals(command, element.getSymbol())) {
+                    element.run(getBooks());
+                }
             }
         }
     }

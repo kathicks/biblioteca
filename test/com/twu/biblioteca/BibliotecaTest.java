@@ -13,14 +13,14 @@ import static org.junit.Assert.*;
 public class BibliotecaTest {
 
     private Biblioteca biblioteca;
-    private Book[] books;
-    private Movie[] movies;
+    private Item[] books;
+    private Item[] movies;
     private String sampleOutput;
 
     @Before
     public void setUp() {
         biblioteca = new Biblioteca();
-        books = new Book[] {
+        books = new Item[] {
                     new Book("Half of a Yellow Sun", "Chimamanda Adiche", 2006, false),
                     new Book("Things Fall Apart", "Chinua Achebe", 1958, false),
                     new Book("Norwegian Wood", "Haruki Murakami", 1987, false),
@@ -28,7 +28,7 @@ public class BibliotecaTest {
                     new Book("Brave New World", "Aldous Huxley", 1932, false)
                 };
         sampleOutput = "Half of a Yellow Sun |  Chimamanda Adiche | 2006";
-        movies = new Movie[] {
+        movies = new Item[] {
                     new Movie("Clueless", 1995, "Amy Heckerling", 8),
                     new Movie("The Harder They Come", 1973, "Perry Henzell", 7),
                     new Movie("Happy Go Lucky", 2008, "Mike Leigh", 6)
