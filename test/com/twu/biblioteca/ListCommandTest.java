@@ -41,4 +41,12 @@ public class ListCommandTest {
         command.run(books);
         assertTrue(!systemOutRule.getLog().contains(sampleOutput));
     }
+
+    @Test
+    public void testListingBooksThatHaveBeenReturned() {
+        books[0].checkOut();
+        books[0].checkIn();
+        command.run(books);
+        assertTrue(systemOutRule.getLog().contains(sampleOutput));
+    }
 }
