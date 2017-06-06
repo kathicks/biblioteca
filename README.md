@@ -109,8 +109,41 @@ So that I know I returned the book to the right library.
 **Unsuccessful Return**
 ```
 As a customer,
-I would like to be notified if the book I am returning has not been added to this library by seeing the message, “That is not a valid book to return.”,
+I'd like to be notified if the book I am returning has not been added to this library by seeing the message, “That is not a valid book to return.”,
 So that I can return it to the correct library or fix my spelling error.
 ```
 
+#### Release No. 2
+
+**List Movies**
+```
+As a customer, 
+I'd like to see a list of available movies,
+So that I can browse for a movie that I might check-out.
+```
+*Movies have a name, year, director and movie rating (from 1-10 or unrated).*
+
+**Check-out Movie**
+```
+As a customer, 
+I'd like to check out a movie from the library,
+So that I can enjoy it at home.
+```
+
+**User Accounts: Login**
+```
+As a librarian, 
+I want to know who has checked out a book,
+So that I can hold them accountable for returning it.
+```
+*Users must now login using their library number (which is in the format xxx-xxxx) and a password in order to check-out and return books.*
+*User credentials are predefined, so registering new users is not part of this story.*
+
+**User Accounts: User Information**
+```
+As a customer, 
+I want to be able to see my user information (name, email address and phone number),
+So that I know that the library can contact me.
+```
+*This option should only be available when the customer is logged in and should only display that customer’s information.*
 
