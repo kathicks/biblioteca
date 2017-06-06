@@ -1,29 +1,30 @@
 package com.twu.biblioteca;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.hamcrest.beans.SamePropertyValuesAs;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class BibliotecaTest {
 
-    Biblioteca biblioteca;
-    String[] books;
-    String list;
+    private Biblioteca biblioteca;
+    private Book[] books;
+    private String sampleOutput;
 
     @Before
     public void setUp() {
         biblioteca = new Biblioteca();
-        books = new String[] {
-                    "Half of a Yellow Sun",
-                    "Things Fall Apart",
-                    "Norwegian Wood",
-                    "The Buried Giant",
-                    "Brave New World"
+        books = new Book[] {
+                    new Book("Half of a Yellow Sun", "Chimamanda Adiche", 2006),
+                    new Book("Things Fall Apart", "Chinua Achebe", 1958),
+                    new Book("Norwegian Wood", "Haruki Murakami", 1987),
+                    new Book("The Buried Giant", "Kazuo Ishiguro", 2015),
+                    new Book("Brave New World", "Aldous Huxley", 1932)
                 };
-        list = "Half of a Yellow Sun\n" +
-                "Things Fall Apart\n" +
-                "Norwegian Wood\n" +
-                "The Buried Giant\n" +
-                "Brave New World\n";
+        sampleOutput = "Half of a Yellow Sun |  Chimamanda Adiche | 2006";
     }
 
     @Test
@@ -33,11 +34,16 @@ public class BibliotecaTest {
 
     @Test
     public void testGetBooks() {
-        assertArrayEquals(biblioteca.getBooks(), books);
+        assertThat(biblioteca.getBooks(), new SamePropertyValuesAs(books));
     }
 
     @Test
     public void testListBooks()  {
-        assertEquals(biblioteca.listBooks(), list);
+        assertTrue(biblioteca.listBooks().contains(sampleOutput));
+    }
+
+    @Test
+    public void testBookDetails() {
+        assertEquals(biblioteca.getBooks()[0].getAuthor(), "Chimamanda Adiche");
     }
 }

@@ -9,15 +9,30 @@ public class Biblioteca {
         System.out.println(self.listBooks());
     }
 
-    private String[] books = new String[] {
-            "Half of a Yellow Sun",
-            "Things Fall Apart",
-            "Norwegian Wood",
-            "The Buried Giant",
-            "Brave New World"
+    private Book[] books = new Book[] {
+            new Book(
+                    "Half of a Yellow Sun",
+                    "Chimamanda Adiche",
+                    2006),
+            new Book(
+                    "Things Fall Apart",
+                    "Chinua Achebe",
+                    1958),
+            new Book(
+                    "Norwegian Wood",
+                    "Haruki Murakami",
+                    1987),
+            new Book(
+                    "The Buried Giant",
+                    "Kazuo Ishiguro",
+                    2015),
+            new Book(
+                    "Brave New World",
+                    "Aldous Huxley",
+                    1932)
     };
 
-    public String[] getBooks() {
+    public Book[] getBooks() {
         return books;
     }
 
@@ -27,9 +42,9 @@ public class Biblioteca {
 
     public String listBooks() {
         String result = "";
-        for (String book : books) {
-            result += book;
-            result += '\n';
+        for (Book book : books) {
+            result += String.format("%20s | %18s | %4d", book.getTitle(), book.getAuthor(), book.getYearPublished());
+            result += "\n";
         }
         return result;
     }
