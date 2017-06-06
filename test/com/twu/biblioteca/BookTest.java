@@ -3,7 +3,7 @@ package com.twu.biblioteca;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class BookTest {
 
@@ -12,7 +12,7 @@ public class BookTest {
 
     @Before
     public void setUp() {
-        book = new Book("Half of a Yellow Sun", "Chimamanda Adiche", 2006);
+        book = new Book("Half of a Yellow Sun", "Chimamanda Adiche", 2006, false);
         sampleOutput = "Half of a Yellow Sun |  Chimamanda Adiche | 2006";
     }
 
@@ -29,6 +29,17 @@ public class BookTest {
     @Test
     public void testGetYearPublished() {
         assertEquals(book.getYearPublished(), 2006);
+    }
+
+    @Test
+    public void testIsOnLoan() {
+        assertTrue(!book.isOnLoan());
+    }
+
+    @Test
+    public void testCheckOut() {
+        book.checkOut();
+        assertTrue(book.isOnLoan());
     }
 
     @Test

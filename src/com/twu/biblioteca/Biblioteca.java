@@ -2,78 +2,103 @@ package com.twu.biblioteca;
 
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Biblioteca {
 
     public static void main(String[] args) {
         Biblioteca self = new Biblioteca();
-
         self.open();
         self.run();
     }
 
     private String welcomeMessage = "Welcome to Biblioteca!";
-    private String menu = "L: List books";
-
+    private String[] validInputs = new String[] {"L", "C", "Q"};
+    private Command[] commands = new Command[] {
+            new ListCommand("L",
+                    "List available books"),
+            new CheckOutCommand("C",
+                    "Check out a book")
+    };
     private Book[] books = new Book[] {
             new Book(
                     "Half of a Yellow Sun",
                     "Chimamanda Adiche",
-                    2006),
+                    2006,
+                    false ),
             new Book(
                     "Things Fall Apart",
                     "Chinua Achebe",
-                    1958),
+                    1958,
+                    false ),
             new Book(
                     "Norwegian Wood",
                     "Haruki Murakami",
-                    1987),
+                    1987,
+                    false),
             new Book(
                     "The Buried Giant",
                     "Kazuo Ishiguro",
-                    2015),
+                    2015,
+                    false),
             new Book(
                     "Brave New World",
                     "Aldous Huxley",
-                    1932)
+                    1932,
+                    false)
     };
-
-    public Book[] getBooks() {
-        return books;
-    }
 
     public String getWelcomeMessage() {
         return welcomeMessage;
     }
 
-    public String getMenu() {
-        return menu;
+    public Book[] getBooks() {
+        return books;
     }
 
-    public String listBooks() {
+    public Command[] getCommands() {
+        return commands;
+    }
+
+    public String formatCommands() {
         String result = "";
-        for (Book book : books) {
-            result += book.toString() + "\n";
+        for (Command command : getCommands()) {
+            result += command.toString() + "\n";
         }
         return result;
     }
 
     public void open() {
-        System.out.println(getWelcomeMessage() + "\n\n" + getMenu());
+        System.out.println(getWelcomeMessage() + "\n\n" + formatCommands());
     }
 
     public void run() {
         Scanner scan = new Scanner(System.in);
         String command = scan.next().substring(0, 1);
-
         while (!Objects.equals(command, "Q")) {
-            if (Objects.equals(command, "L")) {
-                System.out.println(listBooks());
-            } else {
-                System.out.println("Select a valid option!");
-            }
+            respondToInput(command);
             command = scan.next().substring(0, 1);
         }
+    }
+
+    private void respondToInput(String command) {
+        if (isValidCommand(command)) {
+            executeCommand(command);
+        } else {
+            System.out.println("Select a valid option!");
+        }
+    }
+
+    private void executeCommand(String command) {
+        for (Command element : getCommands()) {
+            if (Objects.equals(command, element.getSymbol())) {
+                element.run(getBooks());
+            }
+        }
+    }
+
+    private boolean isValidCommand(String command) {
+        return Arrays.asList(validInputs).contains(command);
     }
 
 }

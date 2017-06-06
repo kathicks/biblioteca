@@ -20,11 +20,11 @@ public class BibliotecaTest {
     public void setUp() {
         biblioteca = new Biblioteca();
         books = new Book[] {
-                    new Book("Half of a Yellow Sun", "Chimamanda Adiche", 2006),
-                    new Book("Things Fall Apart", "Chinua Achebe", 1958),
-                    new Book("Norwegian Wood", "Haruki Murakami", 1987),
-                    new Book("The Buried Giant", "Kazuo Ishiguro", 2015),
-                    new Book("Brave New World", "Aldous Huxley", 1932)
+                    new Book("Half of a Yellow Sun", "Chimamanda Adiche", 2006, false),
+                    new Book("Things Fall Apart", "Chinua Achebe", 1958, false),
+                    new Book("Norwegian Wood", "Haruki Murakami", 1987, false),
+                    new Book("The Buried Giant", "Kazuo Ishiguro", 2015, false),
+                    new Book("Brave New World", "Aldous Huxley", 1932, false)
                 };
         sampleOutput = "Half of a Yellow Sun |  Chimamanda Adiche | 2006";
     }
@@ -38,25 +38,20 @@ public class BibliotecaTest {
     }
 
     @Test
-    public void testGetMenu() {
-        assertEquals(biblioteca.getMenu(), "L: List books");
-    }
-
-    @Test
     public void testGetBooks() {
         assertThat(biblioteca.getBooks(), new SamePropertyValuesAs(books));
     }
 
     @Test
-    public void testListBooks()  {
-        assertTrue(biblioteca.listBooks().contains(sampleOutput));
+    public void testFormatCommands() {
+        assertEquals(biblioteca.formatCommands(), "L: List available books\nC: Check out a book\n");
     }
 
     @Test
-    public void testOpenDisplaysMenu() {
+    public void testOpenDisplaysWelcomeMessageAndMenu() {
         biblioteca.open();
         assertEquals("Welcome to Biblioteca!\n" + "\n" +
-                "L: List books\n", systemOutRule.getLog());
+                "L: List available books\nC: Check out a book\n\n", systemOutRule.getLog());
     }
 
     @Test
