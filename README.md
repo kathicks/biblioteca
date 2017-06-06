@@ -27,6 +27,7 @@
 ### User stories
 
 #### Release No. 1
+------
 
 **Welcome Message**
 ```
@@ -114,6 +115,7 @@ So that I can return it to the correct library or fix my spelling error.
 ```
 
 #### Release No. 2
+------
 
 **List Movies**
 ```
