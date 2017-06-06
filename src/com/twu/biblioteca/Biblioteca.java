@@ -19,7 +19,8 @@ public class Biblioteca {
                     "List available books"),
             new CheckOutCommand("C",
                     "Check out a book"),
-            new ReturnCommand("R", "Return a book")
+            new ReturnCommand("R", "Return a book"),
+            new Command("Q", "Quit")
     };
     private Book[] books = new Book[] {
             new Book(
