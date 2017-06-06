@@ -51,12 +51,31 @@ public class Biblioteca {
                     false)
     };
 
+    private Movie[] movies = new Movie[] {
+            new Movie("Clueless",
+                    1995,
+                    "Amy Heckerling",
+                    8),
+            new Movie("The Harder They Come",
+                    1973,
+                    "Perry Henzell",
+                    7),
+            new Movie("Happy Go Lucky",
+                    2008,
+                    "Mike Leigh",
+                    6)
+    };
+
     public String getWelcomeMessage() {
         return welcomeMessage;
     }
 
     public Book[] getBooks() {
         return books;
+    }
+
+    public Movie[] getMovies() {
+        return movies;
     }
 
     public Command[] getCommands() {

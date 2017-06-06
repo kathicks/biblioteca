@@ -14,6 +14,7 @@ public class BibliotecaTest {
 
     private Biblioteca biblioteca;
     private Book[] books;
+    private Movie[] movies;
     private String sampleOutput;
 
     @Before
@@ -27,6 +28,11 @@ public class BibliotecaTest {
                     new Book("Brave New World", "Aldous Huxley", 1932, false)
                 };
         sampleOutput = "Half of a Yellow Sun |  Chimamanda Adiche | 2006";
+        movies = new Movie[] {
+                    new Movie("Clueless", 1995, "Amy Heckerling", 8),
+                    new Movie("The Harder They Come", 1973, "Perry Henzell", 7),
+                    new Movie("Happy Go Lucky", 2008, "Mike Leigh", 6)
+                };
     }
 
     @Rule
@@ -40,6 +46,11 @@ public class BibliotecaTest {
     @Test
     public void testGetBooks() {
         assertThat(biblioteca.getBooks(), new SamePropertyValuesAs(books));
+    }
+
+    @Test
+    public void testGetMovies() {
+        assertThat(biblioteca.getMovies(), new SamePropertyValuesAs(movies));
     }
 
     @Test
