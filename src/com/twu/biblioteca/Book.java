@@ -23,4 +23,8 @@ public class Book {
     public int getYearPublished() {
         return yearPublished;
     }
+
+    public String toString() {
+        return String.format("%20s | %18s | %4d", getTitle(), getAuthor(), getYearPublished());
+    }
 }

@@ -1,13 +1,19 @@
 package com.twu.biblioteca;
 
+import java.util.Objects;
+import java.util.Scanner;
+
 public class Biblioteca {
 
     public static void main(String[] args) {
         Biblioteca self = new Biblioteca();
 
-        System.out.println(self.welcomeMessage() + "\n");
-        System.out.println(self.listBooks());
+        self.open();
+        self.run();
     }
+
+    private String welcomeMessage = "Welcome to Biblioteca!";
+    private String menu = "L: List books";
 
     private Book[] books = new Book[] {
             new Book(
@@ -36,17 +42,38 @@ public class Biblioteca {
         return books;
     }
 
-    public String welcomeMessage() {
-        return "Welcome to Biblioteca!";
+    public String getWelcomeMessage() {
+        return welcomeMessage;
+    }
+
+    public String getMenu() {
+        return menu;
     }
 
     public String listBooks() {
         String result = "";
         for (Book book : books) {
-            result += String.format("%20s | %18s | %4d", book.getTitle(), book.getAuthor(), book.getYearPublished());
-            result += "\n";
+            result += book.toString() + "\n";
         }
         return result;
+    }
+
+    public void open() {
+        System.out.println(getWelcomeMessage() + "\n\n" + getMenu());
+    }
+
+    public void run() {
+        Scanner scan = new Scanner(System.in);
+        String command = scan.next().substring(0, 1);
+
+        while (!Objects.equals(command, "Q")) {
+            if (Objects.equals(command, "L")) {
+                System.out.println(listBooks());
+            } else {
+                System.out.println("Select a valid option!");
+            }
+            command = scan.next().substring(0, 1);
+        }
     }
 
 }

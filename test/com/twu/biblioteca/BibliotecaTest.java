@@ -2,11 +2,13 @@ package com.twu.biblioteca;
 
 import org.hamcrest.beans.SamePropertyValuesAs;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.contrib.java.lang.system.SystemOutRule;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import java.io.ByteArrayInputStream;
+
+import static org.junit.Assert.*;
 
 public class BibliotecaTest {
 
@@ -27,9 +29,17 @@ public class BibliotecaTest {
         sampleOutput = "Half of a Yellow Sun |  Chimamanda Adiche | 2006";
     }
 
+    @Rule
+    public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
+
     @Test
-    public void testWelcomeMessage() {
-        assertEquals(biblioteca.welcomeMessage(), "Welcome to Biblioteca!");
+    public void testGetWelcomeMessage() {
+        assertEquals(biblioteca.getWelcomeMessage(), "Welcome to Biblioteca!");
+    }
+
+    @Test
+    public void testGetMenu() {
+        assertEquals(biblioteca.getMenu(), "L: List books");
     }
 
     @Test
@@ -43,7 +53,25 @@ public class BibliotecaTest {
     }
 
     @Test
-    public void testBookDetails() {
-        assertEquals(biblioteca.getBooks()[0].getAuthor(), "Chimamanda Adiche");
+    public void testOpenDisplaysMenu() {
+        biblioteca.open();
+        assertEquals("Welcome to Biblioteca!\n" + "\n" +
+                "L: List books\n", systemOutRule.getLog());
+    }
+
+    @Test
+    public void testRunningWithInvalidCommand() {
+        ByteArrayInputStream in = new ByteArrayInputStream("H\nQ".getBytes());
+        System.setIn(in);
+        biblioteca.run();
+        assertEquals("Select a valid option!\n", systemOutRule.getLog());
+    }
+
+    @Test
+    public void testRunningWithQuitCommand() {
+        ByteArrayInputStream in = new ByteArrayInputStream("Q".getBytes());
+        System.setIn(in);
+        biblioteca.run();
+        assertEquals("", systemOutRule.getLog());
     }
 }

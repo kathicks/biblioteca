@@ -8,10 +8,12 @@ import static org.junit.Assert.assertEquals;
 public class BookTest {
 
     Book book;
+    String sampleOutput;
 
     @Before
     public void setUp() {
         book = new Book("Half of a Yellow Sun", "Chimamanda Adiche", 2006);
+        sampleOutput = "Half of a Yellow Sun |  Chimamanda Adiche | 2006";
     }
 
     @Test
@@ -29,4 +31,8 @@ public class BookTest {
         assertEquals(book.getYearPublished(), 2006);
     }
 
+    @Test
+    public void testToString() {
+        assertEquals(book.toString(), sampleOutput);
+    }
 }
