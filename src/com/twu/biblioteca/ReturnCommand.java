@@ -1,21 +1,18 @@
 package com.twu.biblioteca;
 
 import java.util.Objects;
-import java.util.Scanner;
 
-public class ReturnCommand extends Command {
+public class ReturnCommand extends Command implements CommandInterface {
 
     public ReturnCommand(String symbol, String description) {
         super(symbol, description);
     }
 
-    public void run(Item[] items) {
-        System.out.println("Enter item title:");
-        Scanner input = new Scanner(System.in);
-        String title = input.nextLine();
+    public void run(Item[] items, Session session) throws Exception {
+        String title = CommandInterface.takeItem();
         for (Item item : items) {
             if (Objects.equals(item.getTitle(), title)) {
-                if (item.checkIn()){
+                if (item.checkIn(session)){
                     System.out.println("Thank you for returning the item.");
                     return;
                 }

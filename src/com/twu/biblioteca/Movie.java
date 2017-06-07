@@ -32,6 +32,12 @@ public class Movie extends Item {
     }
 
     public String toString() {
-        return String.format("%20s | %4d | %14s | %1d", getTitle(), getYear(), getDirector(), getRating());
+        return String.format(
+                "%20s | %4d | %14s | %1d",
+                getTitle(),
+                getYear(),
+                getDirector(),
+                getRating()
+        );
     }
 }

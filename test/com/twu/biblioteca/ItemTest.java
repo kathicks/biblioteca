@@ -9,10 +9,15 @@ import static org.junit.Assert.assertTrue;
 public class ItemTest {
 
     Item book;
+    User user;
+    Session session;
 
     @Before
     public void setUp() {
         book = new Book("Half of a Yellow Sun", "Chimamanda Adiche", 2006, false);
+        user = new User("165-7864", "dogcatrabbit");
+        session = new Session();
+        session.setUser(user);
     }
 
     @Test
@@ -26,15 +31,28 @@ public class ItemTest {
     }
 
     @Test
-    public void testCheckOut() {
-        book.checkOut();
+    public void testCheckOutChangesOnLoanField() throws Exception {
+        book.checkOut(user);
         assertTrue(book.isOnLoan());
     }
 
     @Test
-    public void testCheckIn() {
-        book.checkOut();
-        book.checkIn();
+    public void testCheckInChangesOnLoanField() throws Exception {
+        book.checkOut(user);
+        book.checkIn(session);
         assertTrue(!book.isOnLoan());
+    }
+
+    @Test
+    public void testCheckOutAssignsCurrentUser() throws Exception {
+        book.checkOut(user);
+        assertEquals(book.currentUser, user);
+    }
+
+    @Test
+    public void testCheckInMakesCurrentUserNull() throws Exception {
+        book.checkOut(user);
+        book.checkIn(session);
+        assertTrue(book.currentUser == null);
     }
 }

@@ -21,6 +21,11 @@ public class Book extends Item {
     }
 
     public String toString() {
-        return String.format("%20s | %18s | %4d", getTitle(), getAuthor(), getYearPublished());
+        return String.format(
+                "%20s | %18s | %4d",
+                getTitle(),
+                getAuthor(),
+                getYearPublished()
+        );
     }
 }

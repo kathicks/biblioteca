@@ -22,6 +22,6 @@ public class Command {
         return getSymbol() + ": " + getDescription();
     }
 
-    public void run(Item[] items) { }
+    public void run(Item[] items, Session sessionUser) throws Exception { }
 
 }

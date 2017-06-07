@@ -6,7 +6,7 @@ public class ListCommand extends Command {
         super(symbol, description);
     }
 
-    public void run(Item[] items) {
+    public void run(Item[] items, Session sessionUser) {
         String result = "";
         for (Item book : items) {
             if (!book.isOnLoan()) {

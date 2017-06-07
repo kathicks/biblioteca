@@ -4,15 +4,14 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.SystemOutRule;
-
 import java.io.ByteArrayInputStream;
-
 import static org.junit.Assert.*;
 
 public class CheckOutCommandTest {
 
-    CheckOutCommand command;
+    private CheckOutCommand command;
     private Book[] books;
+    private Session session;
 
     @Before
     public void setUp() {
@@ -24,6 +23,8 @@ public class CheckOutCommandTest {
                 new Book("The Buried Giant", "Kazuo Ishiguro", 2015, false),
                 new Book("Brave New World", "Aldous Huxley", 1932, false)
         };
+        session = new Session();
+        session.setUser(new User("165-7864", "dogcatrabbit"));
     }
 
     @Rule
@@ -31,26 +32,26 @@ public class CheckOutCommandTest {
 
 
     @Test
-    public void testCheckOutValidBook() {
+    public void testCheckOutValidBook() throws Exception {
         ByteArrayInputStream in = new ByteArrayInputStream("Brave New World".getBytes());
         System.setIn(in);
-        command.run(books);
+        command.run(books, session);
         assertTrue(books[4].isOnLoan());
     }
 
     @Test
-    public void testCheckOutConfirmationMessage() {
+    public void testCheckOutConfirmationMessage() throws Exception {
         ByteArrayInputStream in = new ByteArrayInputStream("Brave New World".getBytes());
         System.setIn(in);
-        command.run(books);
+        command.run(books, session);
         assertTrue(systemOutRule.getLog().contains("Thank you! Enjoy."));
     }
 
     @Test
-    public void testInvalidCheckOutMessage() {
+    public void testInvalidCheckOutMessage() throws Exception {
         ByteArrayInputStream in = new ByteArrayInputStream("Alone in Berlin".getBytes());
         System.setIn(in);
-        command.run(books);
+        command.run(books, session);
         assertTrue(systemOutRule.getLog().contains("That item is not available."));
     }
 }

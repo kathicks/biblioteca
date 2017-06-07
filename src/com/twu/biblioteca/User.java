@@ -2,7 +2,7 @@ package com.twu.biblioteca;
 
 public class User {
 
-    public String libraryNumber;
+    private String libraryNumber;
     private String password;
 
     public User(String libraryNumber, String password) {

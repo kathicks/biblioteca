@@ -4,15 +4,16 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.SystemOutRule;
-
 import java.io.ByteArrayInputStream;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 public class ReturnCommandTest {
 
     ReturnCommand command;
     private Book[] books;
+    User user;
+    Session session;
 
     @Before
     public void setUp() {
@@ -24,6 +25,9 @@ public class ReturnCommandTest {
                 new Book("The Buried Giant", "Kazuo Ishiguro", 2015, false),
                 new Book("Brave New World", "Aldous Huxley", 1932, false)
         };
+        user = new User("165-7864", "dogcatrabbit");
+        session = new Session();
+        session.setUser(user);
     }
 
     @Rule
@@ -31,28 +35,28 @@ public class ReturnCommandTest {
 
 
     @Test
-    public void testReturnValidBook() {
+    public void testReturnValidBook() throws Exception {
         ByteArrayInputStream in = new ByteArrayInputStream("Brave New World".getBytes());
         System.setIn(in);
-        books[4].checkOut();
-        command.run(books);
+        books[4].checkOut(user);
+        command.run(books, session);
         assertTrue(!books[4].isOnLoan());
     }
 
     @Test
-    public void testReturnConfirmationMessage() {
+    public void testReturnConfirmationMessage() throws Exception {
         ByteArrayInputStream in = new ByteArrayInputStream("Brave New World".getBytes());
         System.setIn(in);
-        books[4].checkOut();
-        command.run(books);
+        books[4].checkOut(user);
+        command.run(books, session);
         assertTrue(systemOutRule.getLog().contains("Thank you for returning the item."));
     }
 
     @Test
-    public void testInvalidReturnMessage() {
+    public void testInvalidReturnMessage() throws Exception {
         ByteArrayInputStream in = new ByteArrayInputStream("Alone in Berlin".getBytes());
         System.setIn(in);
-        command.run(books);
+        command.run(books, session);
         assertTrue(systemOutRule.getLog().contains("That is not a valid item to return."));
     }
 }

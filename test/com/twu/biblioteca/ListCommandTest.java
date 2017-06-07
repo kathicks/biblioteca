@@ -12,6 +12,8 @@ public class ListCommandTest {
     ListCommand command;
     private Book[] books;
     private String sampleOutput;
+    User user;
+    Session session;
 
     @Before
     public void setUp() {
@@ -24,6 +26,9 @@ public class ListCommandTest {
                 new Book("Brave New World", "Aldous Huxley", 1932, false)
         };
         sampleOutput = "Half of a Yellow Sun |  Chimamanda Adiche | 2006";
+        user = new User("165-7864", "dogcatrabbit");
+        session = new Session();
+        session.setUser(user);
     }
 
     @Rule
@@ -31,22 +36,22 @@ public class ListCommandTest {
 
     @Test
     public void testListingBooks()  {
-        command.run(books);
+        command.run(books, session);
         assertTrue(systemOutRule.getLog().contains(sampleOutput));
     }
 
     @Test
-    public void testNotListingBooksOnLoan() {
-        books[0].checkOut();
-        command.run(books);
+    public void testNotListingBooksOnLoan() throws Exception {
+        books[0].checkOut(user);
+        command.run(books, session);
         assertTrue(!systemOutRule.getLog().contains(sampleOutput));
     }
 
     @Test
-    public void testListingBooksThatHaveBeenReturned() {
-        books[0].checkOut();
-        books[0].checkIn();
-        command.run(books);
+    public void testListingBooksThatHaveBeenReturned() throws Exception {
+        books[0].checkOut(user);
+        books[0].checkIn(session);
+        command.run(books, session);
         assertTrue(systemOutRule.getLog().contains(sampleOutput));
     }
 }

@@ -1,7 +1,6 @@
 package com.twu.biblioteca;
 
 import java.util.Objects;
-import java.util.Scanner;
 
 public class CheckOutCommand extends Command {
 
@@ -9,13 +8,11 @@ public class CheckOutCommand extends Command {
         super(symbol, description);
     }
 
-    public void run(Item[] items) {
-        System.out.println("Enter item title:");
-        Scanner input = new Scanner(System.in);
-        String bookTitle = input.nextLine();
+    public void run(Item[] items, Session session) throws Exception {
+        String title = CommandInterface.takeItem();
         for (Item book : items) {
-            if (Objects.equals(book.getTitle(), bookTitle)) {
-                if (book.checkOut()){
+            if (Objects.equals(book.getTitle(), title)) {
+                if (book.checkOut(session.getUser())){
                     System.out.println("Thank you! Enjoy.");
                     return;
                 }
