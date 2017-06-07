@@ -46,6 +46,17 @@ public interface CommandInterface {
         return result.toString();
     }
 
+    public static void open() {
+        System.out.println(
+                getWelcomeMessage() + "\n\n" +
+                formatCommands()
+        );
+    }
+
+    public static void promptValidCommand() {
+        System.out.println("Select a valid option!");
+    }
+
     public static String takeCommand() {
         return commandInput.next().substring(0, 1);
     }
@@ -78,6 +89,10 @@ public interface CommandInterface {
 
     public static boolean isABookCommand(String command) {
         return Arrays.asList(validInputs[0]).contains(command);
+    }
+
+    public static boolean isASessionCommand(String command) {
+        return Arrays.asList(validInputs[2]).contains(command);
     }
 
     public static boolean confirmPassword() {

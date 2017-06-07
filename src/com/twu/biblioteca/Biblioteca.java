@@ -46,10 +46,7 @@ public class Biblioteca implements CommandInterface {
     }
 
     public void open() {
-        System.out.println(
-            CommandInterface.getWelcomeMessage() + "\n\n" +
-            CommandInterface.formatCommands()
-        );
+        CommandInterface.open();
     }
 
     public void run() {
@@ -64,19 +61,13 @@ public class Biblioteca implements CommandInterface {
         if (CommandInterface.isValidCommand(command)) {
             findMatchingCommandObject(command);
         } else {
-            System.out.println("Select a valid option!");
+            CommandInterface.promptValidCommand();
         }
     }
 
     private void findMatchingCommandObject(String command) {
-        if (command.equals("S")) {
-            session.signIn(getUsers());
-        } else if (command.equals("D")) {
-            try {
-                System.out.println(session.getUser().toString());
-            } catch (Exception e) {
-                System.out.println("Error! You need to be signed in!");
-            }
+        if (CommandInterface.isASessionCommand(command)) {
+            session.runCommand(command, getUsers());
         } else if (CommandInterface.isABookCommand(command)) {
             runCommandObject(command, getBooks());
         } else {
