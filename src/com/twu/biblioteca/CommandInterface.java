@@ -15,7 +15,7 @@ public interface CommandInterface {
     public static final String[][] validInputs = new String[][] {
             {"L", "C", "R"},
             {"M", "B", "G"},
-            {"S", "Q"}};
+            {"S", "D", "Q"}};
     public static final Command[] commands     = new Command[] {
             new ListCommand("L",
                     "List available books"),
@@ -26,6 +26,7 @@ public interface CommandInterface {
             new CheckOutCommand("B", "Check out a movie" ),
             new ReturnCommand("G", "Return a movie"),
             new Command("S", "Sign in"),
+            new Command("D", "See your personal details"),
             new Command("Q", "Quit")
     };
 

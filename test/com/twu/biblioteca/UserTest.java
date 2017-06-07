@@ -44,4 +44,11 @@ public class UserTest {
         assertEquals(user.getPassword(), "libraryuser17");
     }
 
+    @Test
+    public void testUserToString() {
+        assertEquals(user.toString(), "               Kat Hicks\n" +
+                "     kathicks@london.com\n" +
+                "           020 8123 9876");
+    }
+
 }

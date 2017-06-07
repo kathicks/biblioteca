@@ -16,13 +16,15 @@ public class CommandInterfaceTest {
     public void setUp() {
         commands = new Command[] {
                 new ListCommand("L",
-                        "List available books"),
+                "List available books"),
                 new CheckOutCommand("C",
                         "Check out a book"),
                 new ReturnCommand("R", "Return a book"),
                 new ListCommand("M", "List available movies"),
                 new CheckOutCommand("B", "Check out a movie" ),
                 new ReturnCommand("G", "Return a movie"),
+                new Command("S", "Sign in"),
+                new Command("D", "See your personal details"),
                 new Command("Q", "Quit")
         };
         commandList = "L: List available books\n" +
@@ -32,6 +34,7 @@ public class CommandInterfaceTest {
                 "B: Check out a movie\n" +
                 "G: Return a movie\n" +
                 "S: Sign in\n" +
+                "D: See your personal details\n" +
                 "Q: Quit\n";
     }
 

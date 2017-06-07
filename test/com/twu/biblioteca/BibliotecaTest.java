@@ -48,6 +48,7 @@ public class BibliotecaTest {
                 "B: Check out a movie\n" +
                 "G: Return a movie\n" +
                 "S: Sign in\n" +
+                "D: See your personal details\n" +
                 "Q: Quit\n";
         sampleOutput = "Half of a Yellow Sun |  Chimamanda Adiche | 2006";
     }

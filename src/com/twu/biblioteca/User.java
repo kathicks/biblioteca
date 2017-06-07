@@ -36,4 +36,13 @@ public class User {
         return password;
     }
 
+    public String toString() {
+        return String.format(
+                "%24s\n%24s\n%24s",
+                getName(),
+                getEmail(),
+                getPhone()
+        );
+    }
+
 }
