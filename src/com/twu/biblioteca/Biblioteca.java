@@ -71,6 +71,12 @@ public class Biblioteca implements CommandInterface {
     private void findMatchingCommandObject(String command) {
         if (command.equals("S")) {
             session.signIn(getUsers());
+        } else if (command.equals("D")) {
+            try {
+                System.out.println(session.getUser().toString());
+            } catch (Exception e) {
+                System.out.println("Error! You need to be signed in!");
+            }
         } else if (CommandInterface.isABookCommand(command)) {
             runCommandObject(command, getBooks());
         } else {

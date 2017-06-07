@@ -46,9 +46,10 @@ public class UserTest {
 
     @Test
     public void testUserToString() {
-        assertEquals(user.toString(), "               Kat Hicks\n" +
-                "     kathicks@london.com\n" +
-                "           020 8123 9876");
+        assertEquals(user.toString(), "" +
+                        "Name  : Kat Hicks               \n" +
+                        "Email : kathicks@london.com     \n" +
+                        "Phone : 020 8123 9876           ");
     }
 
 }

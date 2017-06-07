@@ -84,4 +84,5 @@ public class BibliotecaTest {
         biblioteca.run();
         assertEquals("", systemOutRule.getLog());
     }
+
 }

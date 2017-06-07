@@ -38,7 +38,7 @@ public class User {
 
     public String toString() {
         return String.format(
-                "%24s\n%24s\n%24s",
+                "Name  : %-24s\nEmail : %-24s\nPhone : %-24s",
                 getName(),
                 getEmail(),
                 getPhone()
