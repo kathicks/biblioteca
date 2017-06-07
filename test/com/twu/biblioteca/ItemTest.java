@@ -15,7 +15,7 @@ public class ItemTest {
     @Before
     public void setUp() {
         book = new Book("Half of a Yellow Sun", "Chimamanda Adiche", 2006, false);
-        user = new User("165-7864", "dogcatrabbit");
+        user = new User("Kat Hicks", "kathicks@london.com", "020 8123 9876","165-7864", "dogcatrabbit");
         session = new Session();
         session.setUser(user);
     }

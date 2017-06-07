@@ -11,8 +11,27 @@ public class UserTest {
     @Before
     public void setUp() {
         user = new User(
+                "Kat Hicks",
+                "kathicks@london.com",
+                "020 8123 9876",
                 "123-4567",
-                "libraryuser17");
+                "libraryuser17"
+                );
+    }
+
+    @Test
+    public void testGetName() {
+        assertEquals(user.getName(), "Kat Hicks");
+    }
+
+    @Test
+    public void testGetEmail() {
+        assertEquals(user.getEmail(), "kathicks@london.com");
+    }
+
+    @Test
+    public void testGetPhone() {
+        assertEquals(user.getPhone(), "020 8123 9876");
     }
 
     @Test
@@ -24,4 +43,5 @@ public class UserTest {
     public void testGetPassword() {
         assertEquals(user.getPassword(), "libraryuser17");
     }
+
 }

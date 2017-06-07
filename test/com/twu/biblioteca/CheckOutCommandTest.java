@@ -24,7 +24,7 @@ public class CheckOutCommandTest {
                 new Book("Brave New World", "Aldous Huxley", 1932, false)
         };
         session = new Session();
-        session.setUser(new User("165-7864", "dogcatrabbit"));
+        session.setUser(new User("Kat Hicks", "kathicks@london.com", "020 8123 9876","165-7864", "dogcatrabbit"));
     }
 
     @Rule

@@ -27,10 +27,10 @@ public class Biblioteca implements CommandInterface {
     };
 
     private User[] users  = new User[] {
-            new User("165-7864", "dogcatrabbit"),
-            new User("753-4967", "sunmoonrain"),
-            new User("075-2395", "grassbutterflytail"),
-            new User("876-2058", "umbrellashirtscarf")
+            new User("Kat Hicks", "kathicks@london.com", "020 8123 9876","165-7864", "dogcatrabbit"),
+            new User("Alice Tidey", "atidey@dunelm.fr", "0207 565 5656", "753-4967", "sunmoonrain"),
+            new User("Isa Cipirska", "isa@cipirska.com", "0208 8888 2222","075-2395", "grassbutterflytail"),
+            new User("Harry Jenkins", "jenkinsh@charity.co.uk", "020 8123 0000","876-2058", "umbrellashirtscarf")
     };
 
     public Item[] getBooks() {

@@ -25,7 +25,7 @@ public class ReturnCommandTest {
                 new Book("The Buried Giant", "Kazuo Ishiguro", 2015, false),
                 new Book("Brave New World", "Aldous Huxley", 1932, false)
         };
-        user = new User("165-7864", "dogcatrabbit");
+        user = new User("Kat Hicks", "kathicks@london.com", "020 8123 9876","165-7864", "dogcatrabbit");
         session = new Session();
         session.setUser(user);
     }
