@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.Items.Book;
+import com.twu.biblioteca.Items.Item;
+import com.twu.biblioteca.Items.Movie;
 import org.hamcrest.beans.SamePropertyValuesAs;
 import org.junit.Before;
 import org.junit.Rule;

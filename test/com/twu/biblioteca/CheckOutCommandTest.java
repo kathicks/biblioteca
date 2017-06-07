@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.Commands.CheckOutCommand;
+import com.twu.biblioteca.Items.Book;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

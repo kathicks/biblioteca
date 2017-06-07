@@ -1,4 +1,7 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.Commands;
+
+import com.twu.biblioteca.Items.Item;
+import com.twu.biblioteca.Session;
 
 public class ListCommand extends Command {
 

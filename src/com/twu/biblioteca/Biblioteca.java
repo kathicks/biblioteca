@@ -1,5 +1,10 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.Commands.Command;
+import com.twu.biblioteca.Items.Book;
+import com.twu.biblioteca.Items.Item;
+import com.twu.biblioteca.Items.Movie;
+
 import java.util.Objects;
 
 public class Biblioteca implements CommandInterface {

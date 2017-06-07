@@ -1,5 +1,9 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.Commands.CheckOutCommand;
+import com.twu.biblioteca.Commands.Command;
+import com.twu.biblioteca.Commands.ListCommand;
+import com.twu.biblioteca.Commands.ReturnCommand;
 import org.hamcrest.beans.SamePropertyValuesAs;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,4 +1,7 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.Items;
+
+import com.twu.biblioteca.Session;
+import com.twu.biblioteca.User;
 
 public abstract class Item {
 

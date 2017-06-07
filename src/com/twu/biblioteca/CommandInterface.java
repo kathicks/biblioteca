@@ -1,5 +1,10 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.Commands.CheckOutCommand;
+import com.twu.biblioteca.Commands.Command;
+import com.twu.biblioteca.Commands.ListCommand;
+import com.twu.biblioteca.Commands.ReturnCommand;
+
 import java.util.Arrays;
 import java.util.Scanner;
 

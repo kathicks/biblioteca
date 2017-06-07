@@ -1,4 +1,8 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.Commands;
+
+import com.twu.biblioteca.CommandInterface;
+import com.twu.biblioteca.Items.Item;
+import com.twu.biblioteca.Session;
 
 import java.util.Objects;
 
