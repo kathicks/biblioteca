@@ -1,5 +1,5 @@
 # Biblioteca
-### Command Line Library Management System
+### Command Line Library Management System (Bangalore Public Library)
 
 ### Setup instructions
 1. Sign into GitHub and create a new repository
